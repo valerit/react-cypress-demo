@@ -12,7 +12,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
-          command: npm install pm2 -g
+          command: sudo npm install pm2 -g
 
       - run:
           name: install-npm-wee
