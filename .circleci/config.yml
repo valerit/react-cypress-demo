@@ -12,6 +12,10 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
+          command: npm install pm2 -g
+
+      - run:
+          name: install-npm-wee
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
@@ -24,7 +28,7 @@ jobs:
       # E2E using Cypress
       - run: 
           name: e2e
-          command: npm start && cypress run
+          command: pm2 start npm -- start && cypress run
 
       # - run:
       #     name: code-coverage
