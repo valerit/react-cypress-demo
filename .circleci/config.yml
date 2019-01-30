@@ -9,16 +9,16 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: install-npm-wee
-          command: sudo npm install pm2 -g
+          command: sudo npm install pm2 yarn -g
 
       - run:
           name: install-npm-wee
-          command: npm install
+          command: yarn install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
       - run:
@@ -28,11 +28,12 @@ jobs:
       # E2E using Cypress
       - run: 
           name: e2e
-          command: pm2 start npm -- start && cypress run
+          command: pm2 start npm -- start && $(npm bin)/cypress
 
-      # - run:
-      #     name: code-coverage
-      #     command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - run:
+          name: code-coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+
       - store_artifacts:
           path: test-results.xml
           prefix: tests
