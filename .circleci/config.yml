@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/react-cypress-demo
     docker:
-      - image: circleci/node:10.15.1
+      - image: circleci/node:10.15.0
     steps:
       - checkout
       - restore_cache:
