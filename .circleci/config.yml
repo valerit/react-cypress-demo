@@ -28,7 +28,7 @@ jobs:
       # E2E using Cypress
       - run: 
           name: e2e
-          command: pm2 start npm -- start && $(npm bin)/cypress
+          command: pm2 start npm -- start && npm run test-e2e
 
       - run:
           name: code-coverage

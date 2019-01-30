@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and it uses Jest for unit testing and Cypress for e2e testing.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and it uses Jest for unit testing and [Cypress](https://www.cypress.io/) for e2e testing.
 
 ## Available Scripts
 
