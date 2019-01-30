@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/node:10.15.0
       - image: cypress/base:8
-      
+
     steps:
       - checkout
       - restore_cache:
@@ -20,6 +20,12 @@ jobs:
       - run:
           name: test
           command: npm test
+
+      # E2E using Cypress
+      - run: 
+        name: e2e
+        command: npm run dev & $(npm bin)/cypress run
+
       # - run:
       #     name: code-coverage
       #     command: './node_modules/.bin/nyc report --reporter=text-lcov'
